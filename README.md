@@ -110,7 +110,7 @@ classDiagram
 
 | Fag | Fokus i workshoppen |
 |---|---|
-| Systemudvikling | Behov, user story, acceptkriterier, refinement, Project og sporbarhed |
+| Systemudvikling | Behov, user story, acceptkriterier, afklaring og opdeling af issues, Project og sporbarhed |
 | Programmering | Kode, struktur, validering, test, debugging og forklaring |
 | Teknologi | Git, branches, build, GitHub Actions, runtime og teknisk kvalitet |
 | IT- og forretning | Forretningsværdi, prioritering, scope, arbejdsgange og ansvar |
@@ -138,27 +138,34 @@ I workshoppen skifter vi mellem GitHub og IDE'en. Hvert praktisk trin er derfor 
 
 # Del 1: Introduktion og klargøring
 
-## 1. Opret jeres eget repository
+## 1. Opret jeres repository fra en starter
 
 ### GitHub – fælles gennemgang
 
-Vis, hvordan man opretter et nyt, tomt repository på sin egen GitHub-konto. Workshoprepositoryet `bytebites-copilot-workshop` bruges kun som kilde til startkode og workflowfiler.
+Vælg det starter-repository, der passer til jeres teknologispor:
+
+- [ByteBites Java starter](https://github.com/krollchristensen/bytebites-java-starter)
+- [ByteBites .NET starter](https://github.com/krollchristensen/bytebites-dotnet-starter)
+
+Et template-repository opretter et nyt, selvstændigt repository med den valgte startkode. Det nye repository indeholder ikke historikken fra starter-repositoryet.
 
 ### GitHub – I gør
 
-1. Vælg **New repository** på GitHub.
-2. Vælg jeres egen GitHub-konto som ejer.
-3. Giv repositoryet navnet `bytebites-workshop`.
-4. Markér **Add a README file**, så repositoryet oprettes med grenen `main`.
+1. Åbn starter-repositoryet til Java eller .NET.
+2. Vælg **Use this template → Create a new repository**.
+3. Vælg jeres egen GitHub-konto som ejer.
+4. Giv repositoryet navnet `bytebites-workshop`.
 5. Vælg **Create repository**.
+6. Kontrollér, at repositoryet indeholder startkoden, og at grenen hedder `main`.
 
 ### IDE – I gør
 
 1. Klon jeres nye repository.
 2. Åbn det klonede repository i jeres IDE.
 3. Kontrollér, at den aktive branch er `main`.
+4. Kontrollér, at `src/Main.java` eller `Program.cs` findes.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/03-opret-eget-repository.gif -->
+<!-- INDSÆT SCREENSHOT/GIF HER: images/03-opret-repository-fra-template.gif -->
 
 ## 2. Opret GitHub Project
 
@@ -195,16 +202,7 @@ Et repository-issue skal senere tilføjes direkte til Project. Issuet er selv ko
 
 ## 3. Kør startprojektet
 
-Vælg ét teknologispor. Hovedforløbet er det samme i begge sprog.
-
-### GitHub og IDE – kopiér startkoden
-
-1. Vælg **Code → Download ZIP** i workshoprepositoryet `bytebites-copilot-workshop`, og pak filen ud.
-2. Vælg kun mappen til jeres teknologispor:
-    - Java: `starter/java`
-    - .NET: `starter/dotnet/ByteBites`
-3. Kopiér **indholdet** af den valgte mappe ind i roden af jeres eget klonede repository. Kopiér ikke begge teknologispor.
-4. Kontrollér i IDE'en, at eksempelvis `src/Main.java` eller `Program.cs` nu ligger i roden af jeres eget repository.
+Startkoden følger med fra det valgte template-repository. Hovedforløbet er det samme i begge teknologispor.
 
 <details>
 <summary>Java i IntelliJ IDEA</summary>
@@ -276,8 +274,6 @@ Skriv ikke kode.
 - Project har de fem korrekte statusser.
 - Startprojektet kan køres i den valgte IDE.
 - I kan forklare, hvad startkoden gør.
-
-**IDE:** Commit og push startkoden til `main`, før det fælles flow begynder.
 
 # Del 2: Fælles flow – issue #1
 
@@ -556,13 +552,13 @@ AI-reviewet er støtte. Et menneske skal stadig læse ændringerne og afgøre, o
 Workshoprepositoryet indeholder workflowskabeloner til Java og .NET i `docs/workflows`. Kopiér kun workflowet til jeres valgte teknologispor:
 
 1. Åbn den relevante fil i workshoprepositoryet på GitHub:
-    - Java: `docs/workflows/java-check.yml`
-    - .NET: `docs/workflows/dotnet-check.yml`
+   - Java: `docs/workflows/java-check.yml`
+   - .NET: `docs/workflows/dotnet-check.yml`
 2. Kopiér hele filens indhold.
 3. Opret mappen `.github/workflows` i jeres eget repository i IDE'en.
 4. Opret den relevante målfil, og indsæt indholdet:
-    - Java: `.github/workflows/java-check.yml`
-    - .NET: `.github/workflows/dotnet-check.yml`
+   - Java: `.github/workflows/java-check.yml`
+   - .NET: `.github/workflows/dotnet-check.yml`
 5. Commit og push workflowfilen til feature-branchen. Den eksisterende pull request opdateres automatisk.
 
 Dermed aktiveres der ikke et .NET-workflow i et repository, hvor gruppen kun arbejder med Java, eller omvendt.
