@@ -1,0 +1,27 @@
+name: Java check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Installér Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Kompilér
+        run: javac -encoding UTF-8 -d out src/*.java
+
+      - name: Kør smoke test
+        run: printf '0\n' | timeout 10 java -cp out Main
