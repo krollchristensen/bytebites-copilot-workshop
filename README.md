@@ -607,6 +607,21 @@ Kontrollér derefter:
 - Fremgår det tydeligt, hvilket forretningsbehov ændringerne løser?
 
 Hvis alle forbindelser kan findes, er arbejdet dokumenteret fra behov til færdig kode.
+### Fagligt stop – kontrollér sporbarheden
+
+Åbn Issue #1 på GitHub, og kontrollér, at I kan finde hele sammenhængen:
+
+**Issue #1 → branch → pull request → commits → ændrede filer**
+
+Kontrollér derefter:
+
+- Er branchen og pull requesten knyttet til Issue #1?
+- Indeholder pull requesten `Closes #1`?
+- Kan I se de tilhørende commits under **Commits**?
+- Kan I se kodeændringerne under **Files changed**?
+- Fremgår det tydeligt, hvilket forretningsbehov ændringerne løser?
+
+Hvis alle forbindelser kan findes, er arbejdet dokumenteret fra behov til færdig kode.
 
 # Del 3: Selvstændig afprøvning
 
