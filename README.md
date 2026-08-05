@@ -359,7 +359,7 @@ Drøft i to minutter:
 
 ### IDE – brug Plan uden kode
 
-Åbn Copilot Chat i IDE'en, vælg Plan, og giv Copilot adgang til den relevante startkode. Kopiér derefter issuebeskrivelsen og denne prompt ind i chatten:
+Åbn Copilot Chat i IDE'en, vælg Plan, og giv Copilot adgang til den relevante startkode. **Kopiér derefter issuebeskrivelsen og denne prompt ind i chatten:**
 
 ```text
 Lav en kort implementeringsplan for issue #1.
