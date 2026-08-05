@@ -468,35 +468,83 @@ Henvis til relevante filer eller metoder. Skriv ikke ny kode.
 - Hvilken validering hører til i brugergrænsefladen, og hvilken hører til i servicen?
 - Hvilke acceptkriterier kræver manuel test?
 
-## 7. Commit, pull request og review
+## 7. Commit og opret pull request
 
-### IDE – commit og push
+### IDE – commit og push kodeændringerne
 
 Kontrollér først, at den aktive branch er:
 
-`feature/opret-bestilling`
+```text
+feature/opret-bestilling
+```
 
 1. Åbn IDE’ens commit-vindue.
-2. Gennemgå de ændrede filer.
-3. Markér kun de filer, som Agenten har oprettet eller ændret for at løse Issue #1.
+2. Gennemgå alle ændrede filer.
+3. Markér kun de filer, der er oprettet eller ændret for at løse Issue #1.
 4. Brug commitbeskeden:
 
-   `Implement order creation`
+```text
+Implement order creation
+```
 
 5. Vælg **Commit and Push**.
 6. Kontrollér, at ændringerne pushes til `feature/opret-bestilling`.
 
-Hvis I bruger terminalen, kan I først se ændringerne med:
+<details>
+<summary>Hvis I bruger terminalen</summary>
+
+Se først ændringerne:
 
 ```bash
 git status
 git diff
+```
+
+Tilføj kun kildekoden til committet:
+
+```bash
+# Java
+git add src
+
+# .NET
+git add *.cs
+```
+
+Kontrollér, hvad der kommer med, og send ændringerne til GitHub:
+
+```bash
+git diff --staged
+git commit -m "Implement order creation"
+git push -u origin feature/opret-bestilling
+```
+
+</details>
 
 ### GitHub – opret pull request
 
-Opret en pull request fra `feature/opret-bestilling` til `main`.
+En pull request bruges til at få ændringerne gennemgået, før de merges til `main`.
 
-Kopiér skabelonen nedenfor ind i pull requestens beskrivelsesfelt. Erstat teksten under **Testresultater** med den udfyldte tabel fra kommentaren i issue #1.
+1. Åbn jeres repository på GitHub.
+2. Vælg **Compare & pull request**.
+
+   Hvis knappen ikke vises, vælg **Pull requests → New pull request**.
+
+3. Kontrollér grenene:
+
+   - **base:** `main`
+   - **compare:** `feature/opret-bestilling`
+
+4. Brug titlen:
+
+```text
+Implementer oprettelse af bestilling
+```
+
+5. Kopiér skabelonen nedenfor ind i beskrivelsesfeltet.
+6. Åbn Issue #1 i en anden fane.
+7. Kopiér den udfyldte testtabel fra kommentaren i Issue #1.
+8. Erstat teksten under **Testresultater** med tabellen.
+9. Vælg **Create pull request**.
 
 ```markdown
 ## Hvad er ændret?
@@ -507,93 +555,138 @@ Kopiér skabelonen nedenfor ind i pull requestens beskrivelsesfelt. Erstat tekst
 
 ## Testresultater
 
-Indsæt den udfyldte testtabel fra issue #1 her.
+Indsæt den udfyldte testtabel fra Issue #1 her.
 
 ## Automatiske kontroller
 
-- Angiv de automatiske test eller build-kontroller, der er kørt.
+- Det valgte GitHub Actions-workflow skal være grønt før merge.
 
 Closes #1
 ```
 
-`Closes #1` forbinder pull requesten med issuet og lukker issuet automatisk, når pull requesten merges til `main`.
+`Closes #1` forbinder pull requesten med Issue #1. Issuet lukkes automatisk, når pull requesten merges til `main`.
 
-**GitHub:** Flyt det samme issue manuelt til `Review`.
+### GitHub – opdatér Project
 
-### GitHub – gennemfør fagligt review
+Når pull requesten er oprettet:
 
-Byt pull request med en kollega. Gennemgå fanen **Files changed** og kontrollér:
+1. Åbn jeres GitHub Project.
+2. Find Issue #1 i `In progress`.
+3. Flyt det samme issue til `Review`.
 
-- om ændringerne matcher issue og plan
-- om valideringen er forståelig
-- om fejl håndteres uden crash
-- om navne og struktur er tydelige
-- om der er ændringer uden for scope
-- om testresultaterne er troværdige
+Issuet skal ikke flyttes til `Done` endnu.
 
-Kopiér eventuelt denne prompt ind i Copilot Chat som støtte:
+## 8. GitHub Actions, review, merge og Done
+
+### IDE – tilføj det valgte workflow
+
+Workshoprepositoryet indeholder ét workflow til Java og ét til .NET. Kopiér kun det workflow, der passer til jeres teknologispor:
+
+- [Java-workflow](https://github.com/krollchristensen/bytebites-copilot-workshop/blob/main/docs/workflows/java-check.yml)
+- [.NET-workflow](https://github.com/krollchristensen/bytebites-copilot-workshop/blob/main/docs/workflows/dotnet-check.yml)
+
+1. Åbn den relevante workflowfil via linket ovenfor.
+2. Kopiér hele filens indhold.
+3. Opret denne mappe i jeres repository:
 
 ```text
-Review ændringerne i denne pull request op imod issue #1.
-Se især efter manglende acceptkriterier, fejl i validering,
-unødvendig kompleksitet og ændringer uden for scope.
-Foreslå ikke en større omskrivning, hvis den nuværende løsning er tilstrækkelig.
+.github/workflows
 ```
 
-AI-reviewet er støtte. Et menneske skal stadig læse ændringerne og afgøre, om de kan godkendes.
+4. Opret den relevante fil:
 
-## 8. GitHub Actions, merge og Done
+```text
+Java: .github/workflows/java-check.yml
+.NET:  .github/workflows/dotnet-check.yml
+```
 
-### GitHub og IDE – tilføj det valgte workflow
+5. Indsæt det kopierede indhold.
+6. Commit og push workflowfilen til `feature/opret-bestilling` med beskeden:
 
-Workshoprepositoryet indeholder workflowskabeloner til Java og .NET i `docs/workflows`. Kopiér kun workflowet til jeres valgte teknologispor:
+```text
+Add GitHub Actions check
+```
 
-1. Åbn den relevante fil i workshoprepositoryet på GitHub:
-   - Java: `docs/workflows/java-check.yml`
-   - .NET: `docs/workflows/dotnet-check.yml`
-2. Kopiér hele filens indhold.
-3. Opret mappen `.github/workflows` i jeres eget repository i IDE'en.
-4. Opret den relevante målfil, og indsæt indholdet:
-   - Java: `.github/workflows/java-check.yml`
-   - .NET: `.github/workflows/dotnet-check.yml`
-5. Commit og push workflowfilen til feature-branchen. Den eksisterende pull request opdateres automatisk.
-
-Dermed aktiveres der ikke et .NET-workflow i et repository, hvor gruppen kun arbejder med Java, eller omvendt.
+Den eksisterende pull request opdateres automatisk.
 
 ### GitHub – kontrollér den automatiske kontrol
 
-Kontrollen skal være grøn før merge. En build- eller smoke-check er ikke det samme som en fuld test af acceptkriterierne.
+Når workflowfilen er pushet, starter GitHub Actions automatisk.
 
-Hvis kontrollen fejler, kan Ask bruges sådan:
+1. Åbn pull requesten.
+2. Vælg fanen **Conversation**.
+3. Rul ned til området med automatiske kontroller.
+4. Vent på resultatet:
+
+   - Gul markering betyder, at kontrollen kører.
+   - Grøn markering betyder, at kontrollen er godkendt.
+   - Rød markering betyder, at kontrollen er fejlet.
+
+5. Vælg **Details** for at se de enkelte trin.
+
+Kontrollen skal være grøn, før pull requesten merges.
+
+Workflowet kontrollerer, at projektet kan bygges og startes. Det erstatter ikke de manuelle test af acceptkriterierne.
+
+Hvis kontrollen fejler, kan Copilot Ask bruges som støtte:
 
 ```text
 Forklar denne fejl fra GitHub Actions i almindeligt dansk.
-Peg på den mest sandsynlige årsag og foreslå den mindste rettelse.
+Peg på den mest sandsynlige årsag, og foreslå den mindste rettelse.
 Skeln mellem fejl i kode, projektstruktur og workflow.
 ```
+
+### GitHub – gennemfør fagligt review
+
+Byt pull request med en kollega.
+
+1. Åbn kollegaens pull request.
+2. Vælg fanen **Files changed**.
+3. Gennemgå kodeændringerne.
+4. Kontrollér:
+
+   - Matcher ændringerne Issue #1 og den godkendte plan?
+   - Er alle acceptkriterier dækket?
+   - Er valideringen forståelig?
+   - Håndteres forkert input uden crash?
+   - Er navne og struktur tydelige?
+   - Er der ændringer uden for issuets afgrænsning?
+   - Stemmer de dokumenterede testresultater med løsningen?
+   - Er GitHub Actions-kontrollen grøn?
+
+5. Skriv en kommentar, hvis noget skal ændres.
+6. Godkend pull requesten, hvis løsningen er tilfredsstillende.
+
+Hvis **Approve** ikke er tilgængelig, skrives i stedet en kort kommentar om, at pull requesten er gennemgået og godkendt.
+
+AI kan støtte reviewet, men et menneske skal læse ændringerne og afgøre, om de kan godkendes.
 
 ### GitHub – merge og afslut arbejdet
 
 Når reviewet er godkendt, og den automatiske kontrol er grøn:
 
-1. Åbn pull requesten på GitHub.
-2. Vælg **Merge pull request → Confirm merge**.
-3. Åbn Issue #1, og kontrollér, at det er lukket automatisk. Det sker på grund af `Closes #1` i pull requesten.
-4. Åbn GitHub Project, og flyt Issue #1 fra **Review** til **Done**.
+1. Åbn pull requesten.
+2. Vælg **Merge pull request**.
+3. Vælg **Confirm merge**.
+4. Åbn Issue #1.
+5. Kontrollér, at issuet blev lukket automatisk på grund af `Closes #1`.
+6. Åbn GitHub Project.
+7. Flyt Issue #1 fra `Review` til `Done`.
 
 ### IDE – hent den færdige løsning
 
 1. Skift fra `feature/opret-bestilling` til `main`.
 2. Hent de seneste ændringer fra GitHub med **Pull**.
-3. Kør programmet igen, og kontrollér, at løsningen stadig virker.
+3. Kør programmet igen.
+4. Kontrollér, at løsningen stadig virker.
 
 ### Fagligt stop – kontrollér sporbarheden
 
-Åbn Issue #1 på GitHub, og kontrollér, at I kan finde hele sammenhængen:
+Åbn Issue #1, og kontrollér, at I kan følge hele sammenhængen:
 
 **Issue #1 → branch → pull request → commits → ændrede filer**
 
-Kontrollér derefter:
+Kontrollér:
 
 - Er branchen og pull requesten knyttet til Issue #1?
 - Indeholder pull requesten `Closes #1`?
@@ -602,22 +695,6 @@ Kontrollér derefter:
 - Fremgår det tydeligt, hvilket forretningsbehov ændringerne løser?
 
 Hvis alle forbindelser kan findes, er arbejdet dokumenteret fra behov til færdig kode.
-### Fagligt stop – kontrollér sporbarheden
-
-Åbn Issue #1 på GitHub, og kontrollér, at I kan finde hele sammenhængen:
-
-**Issue #1 → branch → pull request → commits → ændrede filer**
-
-Kontrollér derefter:
-
-- Er branchen og pull requesten knyttet til Issue #1?
-- Indeholder pull requesten `Closes #1`?
-- Kan I se de tilhørende commits under **Commits**?
-- Kan I se kodeændringerne under **Files changed**?
-- Fremgår det tydeligt, hvilket forretningsbehov ændringerne løser?
-
-Hvis alle forbindelser kan findes, er arbejdet dokumenteret fra behov til færdig kode.
-
 # Del 3: Selvstændig afprøvning
 
 Vælg ét af nedenstående issues. Opret det i jeres repository, tilføj det direkte til Project og gennemfør det korte flow.
