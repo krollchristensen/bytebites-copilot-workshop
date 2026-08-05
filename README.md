@@ -375,7 +375,7 @@ Vurder planen:
 - Er ansvaret mellem `Order`, `OrderService` og `Main` eller `Program` forståeligt?
 - Indeholder den unødvendig kompleksitet?
 
-[!NOTE]
+[!IMPORTANT]
 **GitHub:** Kopiér den godkendte og eventuelt rettede plan fra Copilot Chat, og indsæt den som en kommentar i issue #1. Dermed bliver beslutningen dokumenteret samme sted som behovet.
 
 <!-- INDSÆT SCREENSHOT HER: images/09-copilot-plan-bestilling.png -->
