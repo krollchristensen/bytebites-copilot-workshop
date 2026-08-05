@@ -413,18 +413,28 @@ Flyt issue #1 manuelt fra `Sprint Backlog` til `In progress`.
 ## 6. Kode og test
 
 ### IDE – implementer med Agent
+(kan automatiseres med MCP)
+1. Åbn Issue #1 på GitHub.
+2. Kopiér hele issuebeskrivelsen inklusive acceptkriterierne.
+3. Kopiér også den godkendte implementeringsplan fra kommentaren i Issue #1.
+4. Åbn Copilot Chat i IDE’en, vælg **Agent**, og indsæt følgende:
 
-Åbn Copilot Chat i IDE'en, vælg Agent, og kopiér denne prompt ind. Agenten må kun arbejde på issue #1:
+Implementer den godkendte plan for Issue #1 i den eksisterende startkode.
 
-```text
-Implementer den godkendte plan for issue #1 i den eksisterende startkode.
 Opfyld acceptkriterierne, og hold løsningen enkel og begyndervenlig.
-Brug Order, OrderService og OrderStatus.
+Brug `Order`, `OrderService` og `OrderStatus`.
 Brug kun data i hukommelsen, og håndtér forkert input uden crash.
 Ændr ikke workflow, dokumentation eller andre funktioner.
-```
+
+Issue #1:
+[Indsæt hele issuebeskrivelsen og acceptkriterierne her]
+
+Godkendt implementeringsplan:
+[Indsæt den godkendte plan fra Issue #1 her]
 
 Gennemgå alle foreslåede ændringer, før de accepteres. Bed eventuelt Ask om at forklare en uklar metode eller linje.
+
+
 
 ### IDE – udfør manuelle test
 
