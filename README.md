@@ -9,14 +9,14 @@ Denne workshop viser en sammenhængende, AI-understøttet udviklingsproces fra b
 
 ## Overblik
 
-Workshoppen varer cirka tre timer.
+Workshoppen varer cirka to timer.
 
 | Tid | Del | Resultat |
-|---:|---|---|
-| 00:00–00:30 | Introduktion og klargøring | Eget repository, GitHub Project og kørende startkode |
-| 00:30–02:10 | Fælles flow | Issue #1 gennemføres fra Product Backlog til Done |
-| 02:10–02:50 | Selvstændig afprøvning | Et nyt issue gennemføres i mindre grupper |
-| 02:50–03:00 | Opsamling | Sporbarhed, faglig refleksion og menneskets ansvar |
+|---|---|---|
+| 00:00–00:20 | Introduktion og klargøring | Eget repository, GitHub Project og kørende startkode |
+| 00:20–01:35 | Fælles flow | Issue #1 gennemføres fra Product Backlog til Done |
+| 01:35–01:50 | Selvstændig afprøvning | Et nyt issue afklares og flyttes til Sprint Backlog |
+| 01:50–02:00 | Opsamling | Sporbarhed, faglig refleksion og menneskets ansvar |
 
 Det samlede flow er:
 
