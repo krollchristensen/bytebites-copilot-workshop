@@ -156,7 +156,7 @@ Et template-repository opretter et nyt, selvstændigt repository med den valgte 
 3. Vælg jeres egen GitHub-konto som ejer.
 4. Giv repositoryet navnet `bytebites-workshop`.
 5. Vælg **Create repository**.
-6. Kontrollér, at repositoryet indeholder startkoden, og at grenen hedder `main`.
+6. Kontrollér, at repositoryet indeholder startkoden, og at Branch hedder `main`.
 
 ### IDE – I gør
 
