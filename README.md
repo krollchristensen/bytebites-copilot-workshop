@@ -472,14 +472,25 @@ Henvis til relevante filer eller metoder. Skriv ikke ny kode.
 
 ### IDE – commit og push
 
-Kontrollér først ændringerne i IDE'en eller med `git diff`. Commit kun filer, der hører til issue #1.
+Kontrollér først, at den aktive branch er:
+
+`feature/opret-bestilling`
+
+1. Åbn IDE’ens commit-vindue.
+2. Gennemgå de ændrede filer.
+3. Markér kun de filer, som Agenten har oprettet eller ændret for at løse Issue #1.
+4. Brug commitbeskeden:
+
+   `Implement order creation`
+
+5. Vælg **Commit and Push**.
+6. Kontrollér, at ændringerne pushes til `feature/opret-bestilling`.
+
+Hvis I bruger terminalen, kan I først se ændringerne med:
 
 ```bash
 git status
-git add .
-git commit -m "Implement order creation"
-git push -u origin feature/opret-bestilling
-```
+git diff
 
 ### GitHub – opret pull request
 
