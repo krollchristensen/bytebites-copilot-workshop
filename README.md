@@ -1,0 +1,2 @@
+# bytebites-copilot-workshop
+Workshop
