@@ -577,34 +577,36 @@ Peg på den mest sandsynlige årsag og foreslå den mindste rettelse.
 Skeln mellem fejl i kode, projektstruktur og workflow.
 ```
 
-### GitHub – merge og afslut flowet
+### GitHub – merge og afslut arbejdet
 
-Når review og kontrol er godkendt:
+Når reviewet er godkendt, og den automatiske kontrol er grøn:
 
-1. Merge pull requesten til `main`.
-2. Kontrollér, at issue #1 blev lukket automatisk.
-3. Flyt det lukkede issue manuelt til Done.
-4. Skift til IDE'en.
+1. Åbn pull requesten på GitHub.
+2. Vælg **Merge pull request → Confirm merge**.
+3. Åbn Issue #1, og kontrollér, at det er lukket automatisk. Det sker på grund af `Closes #1` i pull requesten.
+4. Åbn GitHub Project, og flyt Issue #1 fra **Review** til **Done**.
 
-**IDE:** Skift til `main`, hent de seneste ændringer, og kør programmet igen.
+### IDE – hent den færdige løsning
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/16-merge-issue-done.gif -->
+1. Skift fra `feature/opret-bestilling` til `main`.
+2. Hent de seneste ændringer fra GitHub med **Pull**.
+3. Kør programmet igen, og kontrollér, at løsningen stadig virker.
 
-### Kontrollér sporbarheden begge veje
+### Fagligt stop – kontrollér sporbarheden
 
-Følg først kæden fremad:
+Åbn Issue #1 på GitHub, og kontrollér, at I kan finde hele sammenhængen:
 
-```text
-Issue #1 → branch → pull request → commit → ændrede filer
-```
+**Issue #1 → branch → pull request → commits → ændrede filer**
 
-Find derefter en ændret kodelinje og følg kæden tilbage:
+Kontrollér derefter:
 
-```text
-Kodelinje → commit → pull request → issue #1 → forretningsbehov
-```
+- Er branchen og pull requesten knyttet til Issue #1?
+- Indeholder pull requesten `Closes #1`?
+- Kan I se de tilhørende commits under **Commits**?
+- Kan I se kodeændringerne under **Files changed**?
+- Fremgår det tydeligt, hvilket forretningsbehov ændringerne løser?
 
-Hvis forbindelsen mangler et sted, er arbejdet ikke tilstrækkeligt dokumenteret.
+Hvis alle forbindelser kan findes, er arbejdet dokumenteret fra behov til færdig kode.
 
 # Del 3: Selvstændig afprøvning
 
