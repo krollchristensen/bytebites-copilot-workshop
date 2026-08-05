@@ -165,8 +165,6 @@ Et template-repository opretter et nyt, selvstændigt repository med den valgte 
 3. Kontrollér, at den aktive branch er `main`.
 4. Kontrollér, at `src/Main.java` eller `Program.cs` findes.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/03-opret-repository-fra-template.gif -->
-
 ## 2. Opret GitHub Project
 
 ### GitHub – fælles gennemgang
@@ -187,10 +185,6 @@ flowchart LR
 | In progress | Issues, som nogen aktivt arbejder på |
 | Review | Implementeringen venter på fagligt review og automatiske kontroller |
 | Done | Løsningen er reviewet, godkendt og merget |
-
-<!-- INDSÆT SCREENSHOT/GIF HER: images/04-opret-github-project.gif -->
-
-<!-- INDSÆT SCREENSHOT HER: images/05-project-board-statusser.png -->
 
 ### GitHub – I gør
 
@@ -226,7 +220,6 @@ javac -d out src/Main.java
 java -cp out Main
 ```
 
-<!-- INDSÆT SCREENSHOT HER: images/01-java-startprojekt-intellij.png -->
 
 </details>
 
@@ -254,7 +247,6 @@ Kontrollér også, at projektet kan bygges uden at starte det interaktive progra
 dotnet build
 ```
 
-<!-- INDSÆT SCREENSHOT HER: images/02-dotnet-startprojekt.png -->
 
 </details>
 
@@ -328,7 +320,6 @@ Labels gør det hurtigt at se, hvilken type arbejde et issue indeholder, og hvil
 
 Brug `feature` til opgavetypen og `programmering`, `systemudvikling` og `teknologi` til de faglige områder i issue #1.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/06-opret-issue-1.gif -->
 
 ### GitHub – opret issue #1
 
@@ -341,8 +332,6 @@ Brug `feature` til opgavetypen og `programmering`, `systemudvikling` og `teknolo
 7. Placér issuet i `Product Backlog`.
 8. Kontrollér, at issuets Project-felt viser det rigtige Project.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/07-issue-til-project.gif -->
-
 ### Fagligt stop
 
 Drøft i to minutter:
@@ -352,8 +341,6 @@ Drøft i to minutter:
 - Kan issuet gennemføres fra Sprint Backlog til Done i den fælles gennemgang?
 
 **GitHub:** Når issuet er afklaret og valgt til workshoppen, flyttes det manuelt fra `Product Backlog` til `Sprint Backlog`.
-
-<!-- INDSÆT SCREENSHOT/GIF HER: images/08-product-til-sprint-backlog.gif -->
 
 ## 5. Plan og branch
 
@@ -378,8 +365,6 @@ Vurder planen:
 [!IMPORTANT]
 **GitHub:** Kopiér den godkendte og eventuelt rettede plan fra Copilot Chat, og indsæt den som en kommentar i issue #1. Dermed bliver beslutningen dokumenteret samme sted som behovet.
 
-<!-- INDSÆT SCREENSHOT HER: images/09-copilot-plan-bestilling.png -->
-
 ### GitHub – opret branch fra issuet
 
 1. Åbn issue #1 på GitHub.
@@ -398,10 +383,6 @@ Vurder planen:
 ### GitHub – opdatér Project
 
 Flyt issue #1 manuelt fra `Sprint Backlog` til `In progress`.
-
-<!-- INDSÆT SCREENSHOT/GIF HER: images/10-branch-fra-issue.gif -->
-
-<!-- INDSÆT SCREENSHOT HER: images/11-issue-in-progress.png -->
 
 ### Tjek før I fortsætter
 
@@ -526,11 +507,7 @@ Closes #1
 
 `Closes #1` forbinder pull requesten med issuet og lukker issuet automatisk, når pull requesten merges til `main`.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/12-pull-request-closes-1.gif -->
-
 **GitHub:** Flyt det samme issue manuelt til `Review`.
-
-<!-- INDSÆT SCREENSHOT HER: images/13-issue-review.png -->
 
 ### GitHub – gennemfør fagligt review
 
@@ -554,8 +531,6 @@ Foreslå ikke en større omskrivning, hvis den nuværende løsning er tilstrækk
 
 AI-reviewet er støtte. Et menneske skal stadig læse ændringerne og afgøre, om de kan godkendes.
 
-<!-- INDSÆT SCREENSHOT/GIF HER: images/14-pr-files-changed-review.gif -->
-
 ## 8. GitHub Actions, merge og Done
 
 ### GitHub og IDE – tilføj det valgte workflow
@@ -577,8 +552,6 @@ Dermed aktiveres der ikke et .NET-workflow i et repository, hvor gruppen kun arb
 ### GitHub – kontrollér den automatiske kontrol
 
 Kontrollen skal være grøn før merge. En build- eller smoke-check er ikke det samme som en fuld test af acceptkriterierne.
-
-<!-- INDSÆT SCREENSHOT HER: images/15-actions-groen-check.png -->
 
 Hvis kontrollen fejler, kan Ask bruges sådan:
 
